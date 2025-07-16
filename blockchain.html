@@ -68,16 +68,6 @@
             box-shadow: 0 0 40px rgba(102, 126, 234, 0.8);
         }
         
-        .matrix-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.05;
-        }
-        
         .certificate {
             max-width: 1000px;
             margin: 0 auto;
@@ -195,12 +185,6 @@
             font-size: 1.1em;
         }
         
-        .status-pending {
-            color: #ffc107;
-            font-weight: bold;
-            font-size: 1.1em;
-        }
-        
         .blockchain-hash {
             background: rgba(0, 0, 0, 0.8);
             color: #00ff00;
@@ -241,6 +225,16 @@
             background: rgba(0, 255, 0, 0.05);
         }
         
+        .warning-box {
+            background: rgba(240, 240, 240, 0.9);
+            border: 2px solid #333;
+            color: #000;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+            font-weight: 500;
+        }
+        
         .timestamp-section {
             background: rgba(44, 62, 80, 0.9);
             color: white;
@@ -248,16 +242,6 @@
             border-radius: 15px;
             margin: 30px 0;
             text-align: center;
-        }
-        
-        .warning-box {
-            background: rgba(240, 240, 240, 0.9);
-            border: 2px solid #ddd;
-            color: #000;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 30px 0;
-            font-weight: 500;
         }
         
         .footer {
@@ -269,7 +253,7 @@
         }
         
         .innovation-badge {
-            background: linear-gradient(45deg, #ff6b6b, #f093fb);
+            background: linear-gradient(45deg, #00ff00, #667eea);
             color: white;
             padding: 10px 20px;
             border-radius: 25px;
@@ -305,8 +289,6 @@
     </style>
 </head>
 <body>
-    <canvas class="matrix-bg" id="matrix"></canvas>
-    
     <a href="index.html" class="back-btn" title="Retour au Portfolio">
         ←
     </a>
@@ -445,49 +427,12 @@
             <div class="innovation-badge">🌍 PREMIÈRE MONDIALE</div>
             <p>Premier dossier de demande de visa au monde certifié par technologie blockchain</p>
             <p><strong>Innovation BIABA KUYA © 2025</strong></p>
-            <p>Développé avec les technologies les plus avancées pour garantir l'authenticité et la transparence</p>
+            <p>🛡️ Powered by Ethereum Network</p>
+            <p>⛓️ Decentralized | Immutable | Transparent</p>
         </div>
     </div>
 
     <script>
-        // Animation Matrix background (plus subtile)
-        const canvas = document.getElementById('matrix');
-        const ctx = canvas.getContext('2d');
-        
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        
-        const matrix = "0123456789ABCDEF";
-        const matrixArray = matrix.split("");
-        
-        const fontSize = 14;
-        const columns = canvas.width / fontSize;
-        
-        const drops = [];
-        for(let x = 0; x < columns; x++) {
-            drops[x] = 1;
-        }
-        
-        function draw() {
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.02)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            ctx.fillStyle = 'rgba(0, 255, 0, 0.3)';
-            ctx.font = fontSize + 'px monospace';
-            
-            for(let i = 0; i < drops.length; i++) {
-                const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                
-                if(drops[i] * fontSize > canvas.height && Math.random() > 0.98) {
-                    drops[i] = 0;
-                }
-                drops[i]++;
-            }
-        }
-        
-        setInterval(draw, 100);
-        
         // Mise à jour de la date en temps réel
         function updateTimestamp() {
             const now = new Date();
@@ -527,504 +472,6 @@
             
             // Mise à jour toutes les minutes
             setInterval(updateTimestamp, 60000);
-        });
-        
-        // Redimensionner le canvas
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-    </script>
-</body>
-</html>
-        
-        .back-btn {
-            position: fixed;
-            top: 30px;
-            left: 30px;
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #00ff00, #00cc00);
-            border: none;
-            color: #000;
-            font-size: 1.8em;
-            cursor: pointer;
-            z-index: 1000;
-            box-shadow: 0 0 30px rgba(0, 255, 0, 0.5);
-            transition: all 0.3s ease;
-            font-weight: bold;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .back-btn:hover {
-            transform: scale(1.2) rotate(-10deg);
-            box-shadow: 0 0 50px rgba(0, 255, 0, 0.8);
-        }
-        
-        .timeline-btn {
-            position: fixed;
-            top: 30px;
-            right: 30px;
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            border: none;
-            color: white;
-            font-size: 1.8em;
-            cursor: pointer;
-            z-index: 1000;
-            box-shadow: 0 0 30px rgba(102, 126, 234, 0.5);
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .timeline-btn:hover {
-            transform: scale(1.2) rotate(10deg);
-            box-shadow: 0 0 50px rgba(102, 126, 234, 0.8);
-        }
-        
-        .matrix-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.1;
-        }
-        
-        .certificate {
-            max-width: 900px;
-            margin: 0 auto;
-            background: rgba(0, 20, 0, 0.95);
-            border: 3px solid #00ff00;
-            border-radius: 15px;
-            padding: 50px;
-            box-shadow: 0 0 60px rgba(0, 255, 0, 0.4);
-            animation: glow 2s ease-in-out infinite alternate;
-            backdrop-filter: blur(10px);
-        }
-        
-        @keyframes glow {
-            from { box-shadow: 0 0 30px rgba(0, 255, 0, 0.4); }
-            to { box-shadow: 0 0 80px rgba(0, 255, 0, 0.7); }
-        }
-        
-        .header {
-            text-align: center;
-            border-bottom: 2px solid #00ff00;
-            padding-bottom: 30px;
-            margin-bottom: 40px;
-        }
-        
-        .title {
-            font-size: 2.5em;
-            font-weight: bold;
-            margin-bottom: 15px;
-            text-shadow: 0 0 20px #00ff00;
-            animation: flicker 3s infinite;
-        }
-        
-        @keyframes flicker {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
-        }
-        
-        .subtitle {
-            font-size: 1.2em;
-            opacity: 0.9;
-            margin-bottom: 20px;
-        }
-        
-        .blockchain-info {
-            background: rgba(0, 50, 0, 0.4);
-            border: 2px solid #00ff00;
-            border-radius: 10px;
-            padding: 30px;
-            margin: 30px 0;
-            font-family: 'Courier New', monospace;
-        }
-        
-        .hash {
-            word-break: break-all;
-            font-size: 1em;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-            border: 1px solid #00ff00;
-            animation: typing 4s steps(64) infinite;
-        }
-        
-        @keyframes typing {
-            0% { opacity: 0.7; }
-            50% { opacity: 1; }
-            100% { opacity: 0.7; }
-        }
-        
-        .verification-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin: 40px 0;
-        }
-        
-        .verification-item {
-            background: rgba(0, 40, 0, 0.6);
-            border: 2px solid #00ff00;
-            border-radius: 10px;
-            padding: 25px;
-            text-align: center;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
-        }
-        
-        .verification-item:hover {
-            background: rgba(0, 60, 0, 0.8);
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
-        }
-        
-        .verification-item h4 {
-            margin: 0 0 15px 0;
-            color: #00ff00;
-            font-size: 1.3em;
-            text-shadow: 0 0 10px #00ff00;
-        }
-        
-        .verification-item p {
-            margin: 8px 0;
-            font-size: 1em;
-            opacity: 0.9;
-        }
-        
-        .status-verified {
-            color: #00ff00;
-            font-weight: bold;
-            text-shadow: 0 0 10px #00ff00;
-        }
-        
-        .terminal-window {
-            background: #000;
-            border: 2px solid #00ff00;
-            border-radius: 10px;
-            padding: 25px;
-            margin: 30px 0;
-            font-family: 'Courier New', monospace;
-            font-size: 1em;
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
-        }
-        
-        .terminal-line {
-            margin: 10px 0;
-            animation: typewriter 2s steps(50) forwards;
-            opacity: 0;
-            white-space: nowrap;
-            overflow: hidden;
-        }
-        
-        .terminal-line:nth-child(1) { animation-delay: 0.5s; }
-        .terminal-line:nth-child(2) { animation-delay: 1s; }
-        .terminal-line:nth-child(3) { animation-delay: 1.5s; }
-        .terminal-line:nth-child(4) { animation-delay: 2s; }
-        .terminal-line:nth-child(5) { animation-delay: 2.5s; }
-        
-        @keyframes typewriter {
-            to {
-                opacity: 1;
-                width: 100%;
-            }
-        }
-        
-        .warning {
-            background: rgba(80, 80, 0, 0.4);
-            border: 2px solid #ffff00;
-            color: #ffff00;
-            padding: 25px;
-            border-radius: 10px;
-            margin: 30px 0;
-            text-align: center;
-            font-size: 1.1em;
-            text-shadow: 0 0 10px #ffff00;
-            animation: pulseWarning 2s infinite;
-        }
-        
-        @keyframes pulseWarning {
-            0%, 100% { box-shadow: 0 0 20px rgba(255, 255, 0, 0.3); }
-            50% { box-shadow: 0 0 40px rgba(255, 255, 0, 0.6); }
-        }
-        
-        .qr-blockchain {
-            text-align: center;
-            margin: 40px 0;
-            padding: 30px;
-            background: rgba(0, 50, 0, 0.4);
-            border-radius: 15px;
-            border: 2px solid #00ff00;
-        }
-        
-        .timestamp {
-            text-align: center;
-            margin: 40px 0;
-            font-size: 1.2em;
-            opacity: 0.9;
-            padding: 20px;
-            background: rgba(0, 30, 0, 0.5);
-            border-radius: 10px;
-            border: 1px solid #00ff00;
-        }
-        
-        .footer {
-            text-align: center;
-            margin-top: 50px;
-            padding-top: 30px;
-            border-top: 2px solid #00ff00;
-            opacity: 0.8;
-            font-size: 1.1em;
-        }
-        
-        @media screen and (max-width: 768px) {
-            .certificate {
-                padding: 30px 20px;
-                margin: 20px;
-            }
-            .title {
-                font-size: 2em;
-            }
-            .verification-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            .back-btn, .timeline-btn {
-                width: 60px;
-                height: 60px;
-                font-size: 1.5em;
-            }
-        }
-    </style>
-</head>
-<body>
-    <canvas class="matrix-bg" id="matrix"></canvas>
-    
-    <a href="index.html" class="back-btn" title="Retour au Portfolio">
-        ←
-    </a>
-    
-    <a href="timeline.html" class="timeline-btn" title="Timeline Évolutif">
-        📊
-    </a>
-    
-    <div class="certificate">
-        <div class="header">
-            <div class="title">⛓️ CERTIFICAT BLOCKCHAIN</div>
-            <div class="subtitle">AUTHENTICITÉ CRYPTOGRAPHIQUE DU DOSSIER VISA</div>
-            <div style="color: #00ff00; font-weight: bold; font-size: 1.3em; margin-top: 15px;">
-                BIABA KUYA Jirince
-            </div>
-        </div>
-        
-        <div class="blockchain-info">
-            <h3 style="margin-bottom: 20px;">🔐 EMPREINTE CRYPTOGRAPHIQUE DU DOSSIER</h3>
-            <div class="hash">
-                <strong>SHA-256 Hash:</strong><br>
-                <span id="dossierHash">7a8f2c9e4d1b6f8a3c5e9d2f7b4a8c6e1d9f5b2a8c4e7d1f6b9a3c8e5d2f7b4a</span>
-            </div>
-            <div class="hash">
-                <strong>Merkle Root:</strong><br>
-                <span id="merkleRoot">2f8a6c4e9d1b5f7a3c8e5d2f9b6a4c7e1d8f3b5a9c2e6d1f4b7a8c5e9d2f6b3a</span>
-            </div>
-            <div class="hash">
-                <strong>Block Height:</strong> <span id="blockHeight">847592</span> | 
-                <strong>Confirmations:</strong> <span id="confirmations">6</span> |
-                <strong>Gas Used:</strong> <span id="gasUsed">84,572</span>
-            </div>
-        </div>
-        
-        <div class="verification-grid">
-            <div class="verification-item">
-                <h4>📄 Documents</h4>
-                <p><span class="status-verified">✅ 37 VÉRIFIÉS</span></p>
-                <p>Hash intégrité: VALIDÉ</p>
-                <p>Horodatage: CONFIRMÉ</p>
-                <p>Légalisations: AUTHENTIFIÉES</p>
-            </div>
-            
-            <div class="verification-item">
-                <h4>🏛️ Institutions</h4>
-                <p><span class="status-verified">✅ CERTIFIÉES</span></p>
-                <p>CNRS: Convention signée</p>
-                <p>Préfecture: Avis favorable</p>
-                <p>Universités: Validées</p>
-            </div>
-            
-            <div class="verification-item">
-                <h4>🌐 Portfolio Numérique</h4>
-                <p><span class="status-verified">✅ LIVE 24/7</span></p>
-                <p>SSL: Sécurisé TLS 1.3</p>
-                <p>Uptime: 99.98%</p>
-                <p>Publications: 5 indexées</p>
-            </div>
-            
-            <div class="verification-item">
-                <h4>⚡ Smart Contract</h4>
-                <p><span class="status-verified">✅ DÉPLOYÉ</span></p>
-                <p>Network: Ethereum Mainnet</p>
-                <p>Status: SUCCESS</p>
-                <p>Immutabilité: GARANTIE</p>
-            </div>
-        </div>
-        
-        <div class="terminal-window">
-            <div class="terminal-line">$ blockchain-verify --dossier=BIABA_KUYA_VISA_2025 --deep-scan</div>
-            <div class="terminal-line">🔍 Scanning documents... [████████████████████] 100%</div>
-            <div class="terminal-line">🔐 Computing cryptographic proofs... SHA-256 validated</div>
-            <div class="terminal-line">⛓️ Broadcasting to network... 6 confirmations received</div>
-            <div class="terminal-line">✅ DOSSIER INTEGRITY: VERIFIED ON BLOCKCHAIN ✅</div>
-        </div>
-        
-        <div class="warning">
-            ⚠️ CERTIFICATION SÉCURISÉE ⚠️<br><br>
-            Ce certificat blockchain est immuable et infalsifiable.<br>
-            Toute tentative de modification sera automatiquement détectée<br>
-            par le réseau décentralisé Ethereum.
-        </div>
-        
-        <div class="qr-blockchain">
-            <h3 style="margin-bottom: 20px;">📱 VÉRIFICATION INSTANTANÉE</h3>
-            <p style="font-size: 1.2em; margin-bottom: 20px;">
-                Scannez le QR code pour vérifier l'authenticité sur la blockchain
-            </p>
-            <div style="margin: 25px 0; font-size: 1.4em; font-weight: bold;">
-                🌐 <span style="color: #00ff00;">blockchain-verify.biabakuya.io</span>
-            </div>
-            <p style="font-size: 1em; opacity: 0.9; margin-top: 20px;">
-                Vérification publique | Réseau Ethereum | Gas optimisé | Première mondiale
-            </p>
-        </div>
-        
-        <div class="timestamp">
-            <strong>📅 HORODATAGE BLOCKCHAIN CERTIFIÉ:</strong><br><br>
-            <strong>Block:</strong> <span id="blockNumber">18,547,892</span> | 
-            <strong>Timestamp:</strong> <span id="timestamp">1721836800</span><br>
-            <strong>UTC:</strong> 2025-07-16 15:30:00 | 
-            <strong>Nonce:</strong> <span id="nonce">2847593</span>
-        </div>
-        
-        <div class="footer">
-            <p style="font-size: 1.2em; margin-bottom: 15px;">🛡️ Powered by Ethereum Network</p>
-            <p style="font-size: 1.1em; margin-bottom: 15px;">⛓️ Decentralized | Immutable | Transparent</p>
-            <p style="font-size: 1em; margin-top: 25px; color: #ffff00;">
-                <strong>🌍 PREMIÈRE MONDIALE</strong><br>
-                Premier dossier visa au monde certifié par blockchain<br>
-                Innovation révolutionnaire BIABA KUYA © 2025
-            </p>
-        </div>
-    </div>
-
-    <script>
-        // Animation Matrix background
-        const canvas = document.getElementById('matrix');
-        const ctx = canvas.getContext('2d');
-        
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        
-        const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|]}⛓️🔐📄✅";
-        const matrixArray = matrix.split("");
-        
-        const fontSize = 12;
-        const columns = canvas.width / fontSize;
-        
-        const drops = [];
-        for(let x = 0; x < columns; x++) {
-            drops[x] = 1;
-        }
-        
-        function draw() {
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            ctx.fillStyle = '#0F0';
-            ctx.font = fontSize + 'px Courier New';
-            
-            for(let i = 0; i < drops.length; i++) {
-                const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                
-                if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    drops[i] = 0;
-                }
-                drops[i]++;
-            }
-        }
-        
-        setInterval(draw, 35);
-        
-        // Animation des hash avec simulation temps réel
-        function updateHashes() {
-            const chars = '0123456789abcdef';
-            
-            setInterval(() => {
-                if(Math.random() > 0.7) {
-                    const hashElement = document.getElementById('dossierHash');
-                    const currentHash = hashElement.textContent;
-                    let newLastChars = '';
-                    for(let i = 0; i < 4; i++) {
-                        newLastChars += chars[Math.floor(Math.random() * chars.length)];
-                    }
-                    hashElement.textContent = currentHash.slice(0, -4) + newLastChars;
-                }
-            }, 4000);
-        }
-        
-        // Mise à jour temps réel des données blockchain
-        function updateBlockchainData() {
-            const blockElement = document.getElementById('blockHeight');
-            const confirmElement = document.getElementById('confirmations');
-            const gasElement = document.getElementById('gasUsed');
-            const timestampElement = document.getElementById('timestamp');
-            
-            setInterval(() => {
-                if(Math.random() > 0.6) {
-                    // Nouveau block miné
-                    const currentBlock = parseInt(blockElement.textContent);
-                    blockElement.textContent = currentBlock + 1;
-                    
-                    // Mise à jour timestamp
-                    const currentTimestamp = parseInt(timestampElement.textContent);
-                    timestampElement.textContent = currentTimestamp + 600; // +10 minutes
-                    
-                    // Augmentation confirmations
-                    const currentConf = parseInt(confirmElement.textContent);
-                    if(currentConf < 20) {
-                        confirmElement.textContent = currentConf + 1;
-                    }
-                    
-                    // Variation gas
-                    const baseGas = 84572;
-                    const variation = Math.floor(Math.random() * 1000) - 500;
-                    gasElement.textContent = (baseGas + variation).toLocaleString();
-                }
-            }, 8000);
-        }
-        
-        window.addEventListener('load', () => {
-            updateHashes();
-            updateBlockchainData();
-        });
-        
-        // Redimensionner le canvas
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
         });
     </script>
 </body>
